@@ -7,7 +7,7 @@ from joblib import dump, load
 import pickle
 
 # load the model from disk
-filename = 'interested.pkl'
+filename = 'nlp_model1.pkl'
 clf = pickle.load(open(filename, 'rb'))
 cv=pickle.load(open('transform2.pkl','rb'))
 app = Flask(__name__)
@@ -49,7 +49,7 @@ def predict():
 	# clf = joblib.load(NB_spam_model)
 
 	if request.method == 'POST':
-		message = request.form['message']
+		message = request.form['Status_information']
 		data = [message]
 		vect = cv.transform(data).toarray()
 		my_prediction = clf.predict(vect)
